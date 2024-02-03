@@ -6,4 +6,6 @@
 
     <string name="bt_submit_cve_text">FETCH</string>
     <string name="cve_hint">CVE-YYYY-NNNN(NNN)</string>
+
+    <string name="lookup_cve_fragment_info">Enter CVE number you wish to look up online using REST API call against NVD.NIST.GOV database (eg. CVE-2022-38392):</string>
 </resources>
