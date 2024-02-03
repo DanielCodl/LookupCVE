@@ -3,4 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Search CVE</string>
     <string name="title_notifications">History</string>
+
+    <string name="bt_submit_cve_text">FETCH</string>
+    <string name="cve_hint">CVE-YYYY-NNNN(NNN)</string>
 </resources>
