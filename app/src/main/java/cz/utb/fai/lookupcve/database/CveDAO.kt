@@ -9,7 +9,7 @@ import androidx.room.Query
 @Dao
 interface CveDao {
 
-    @Query("select * from cve_table order by published DESC")
+    @Query("select * from cve_table order by id DESC")
     fun readAllData():LiveData<List<CveDTO>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

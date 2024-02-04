@@ -4,12 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import cz.utb.fai.lookupcve.database.CveViewModel
 import cz.utb.fai.lookupcve.databinding.FragmentNotificationsBinding
+import androidx.lifecycle.Observer
 
 class NotificationsFragment : Fragment() {
+
+    private lateinit var mCveViewModel: CveViewModel
 
     private var _binding: FragmentNotificationsBinding? = null
 
@@ -28,10 +32,17 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        // Recyclerview
+        val adapter = ListAdapter()
+        val recyclerView = binding.recyclerview //findViewById<RecyclerView>(R.id.recyclerview1)
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        // CveViewModel
+        mCveViewModel = ViewModelProvider(this).get(CveViewModel::class.java)
+        mCveViewModel.readAllData.observe(viewLifecycleOwner, Observer { cve-> adapter.setData(cve)
+        })
+
         return root
     }
 
