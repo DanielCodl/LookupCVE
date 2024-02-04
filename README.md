@@ -6,5 +6,5 @@ Popis příslušného API viz: https://nvd.nist.gov/developers/vulnerabilities
 
 Aplikace podporuje jak novější formát metrik cvssMetricV31, tak i starší cvssMetricV2, a zobrazuje/ukládá tyto položky: id, published, description (en), vectorString, baseScore, baseSeverity a cvssMetric.
 
-Pomoci RecycleView je následně v samostatném fragmentu zobrazena historie výsledků (setříděna od nejnovějšího) uložena v databázi Room.
+Pomoci komponenty RecyclerView je následně v samostatném fragmentu zobrazena historie výsledků (setříděna od nejnovějšího) uložena v databázi Room.
 
