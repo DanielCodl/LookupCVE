@@ -11,5 +11,6 @@ data class CveDTO (
     val description: String,
     val baseScore: Double,
     val baseSeverity: String,
-    val vectorString: String
+    val vectorString: String,
+    val cvssMetric: String // = "cvssMetricV31" or "cvssMetricV2"
 )

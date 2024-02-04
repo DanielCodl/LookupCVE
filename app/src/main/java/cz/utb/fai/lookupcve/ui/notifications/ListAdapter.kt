@@ -36,6 +36,8 @@ class ListAdapter:RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
             holder.itemView.findViewById<TextView>(R.id.description_txt).text =
                 currentItem.description
             holder.itemView.findViewById<TextView>(R.id.rowid_txt).text = currentItem.id.toString()
+            holder.itemView.findViewById<TextView>(R.id.cvssMetric_txt).text =
+                currentItem.cvssMetric
         }
 
         fun setData(cve: List<CveDTO>) {

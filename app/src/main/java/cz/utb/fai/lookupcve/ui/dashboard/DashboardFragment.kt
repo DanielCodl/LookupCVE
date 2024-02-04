@@ -74,6 +74,10 @@ class DashboardFragment : Fragment() {
         dashboardViewModel.description_txt.observe(viewLifecycleOwner) {
             tvl_description_txt.text = it
         }
+        val tvl_cvssMetric_txt: TextView = binding.cvssMetricTxt
+        dashboardViewModel.cvssMetric_txt.observe(viewLifecycleOwner) {
+            tvl_cvssMetric_txt.text = it
+        }
 
         val pb_progressBar: ProgressBar = binding.progressBar
         dashboardViewModel.ProgressBarVisible.observe(viewLifecycleOwner) {
@@ -116,20 +120,28 @@ class DashboardFragment : Fragment() {
                         var baseScore: Double = 0.0
                         var baseSeverity: String = "N/A"
                         var vectorString: String = "N/A"
+                        var cvssMetric: String = "cvssMetricV31"
 
+                        // Check if cvssMetricV31 (newer/preferred) data exists in the JSON output
                         try {
                             baseScore = it.body()?.vulnerabilities!![0].cve.metrics.cvssMetricV31[0].cvssData.baseScore
                             baseSeverity = it.body()?.vulnerabilities!![0].cve.metrics.cvssMetricV31[0].cvssData.baseSeverity
                             vectorString = it.body()?.vulnerabilities!![0].cve.metrics.cvssMetricV31[0].cvssData.vectorString
+                            cvssMetric = "cvssMetricV31"
                         } catch (e: NullPointerException) {
-                            // Fetch older cvssMetricV2 data (for older CVEs) if it exists
+                            // If cvssMetricV31 data DOES NOT exist then check if at least cvssMetricV2 (older) data exists in the JSON output
+                            baseScore = it.body()?.vulnerabilities!![0].cve.metrics.cvssMetricV2[0].cvssData.baseScore
+                            baseSeverity = it.body()?.vulnerabilities!![0].cve.metrics.cvssMetricV2[0].baseSeverity
+                            vectorString = it.body()?.vulnerabilities!![0].cve.metrics.cvssMetricV2[0].cvssData.vectorString
+                            cvssMetric = "cvssMetricV2"
                         }
 
                         dashboardViewModel.vectorString_txt.value=vectorString
                         dashboardViewModel.baseSeverity_txt.value=baseSeverity
                         dashboardViewModel.baseScore_txt.value=baseScore.toString()
+                        dashboardViewModel.cvssMetric_txt.value=cvssMetric
 
-                        val record = CveDTO(0, cveid, published, description, baseScore, baseSeverity, vectorString)
+                        val record = CveDTO(0, cveid, published, description, baseScore, baseSeverity, vectorString, cvssMetric)
 
                         // Store data to Room database
                         mCveViewModel.addCve(record)

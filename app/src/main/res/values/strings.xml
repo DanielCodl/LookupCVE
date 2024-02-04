@@ -7,6 +7,7 @@
     <string name="bt_submit_cve_text">FETCH</string>
     <string name="cve_hint">CVE-YYYY-NNNN(NNN)</string>
 
+    <string name="cvssMetric_txt_sample">cvssMetricV31</string>
     <string name="id_txt_sample">CVE-2019-1010218</string>
     <string name="baseScore_txt_sample">7.5</string>
     <string name="baseSeverity_txt_sample">HIGH</string>

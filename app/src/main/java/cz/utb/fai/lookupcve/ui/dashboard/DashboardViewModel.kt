@@ -24,6 +24,9 @@ class DashboardViewModel : ViewModel() {
     private val _description_txt = MutableLiveData<String>().apply {
         value = ""// "xCherokee Webserver Latest Cherokee Web server Upto Version 1.2.103 (Current stable) is affected by: Buffer Overflow - CWE-120. The impact is: Crash. The component is: Main cherokee command. The attack vector is: Overwrite argv[0] to an insane length with execl. The fixed version is: There's no fix yet."
     }
+    private val _cvssMetric_txt = MutableLiveData<String>().apply {
+        value = ""// "xcvssMetricV31"
+    }
 
     private val _ProgressBarVisible = MutableLiveData<Int>().apply {
         value = View.INVISIBLE
@@ -35,6 +38,7 @@ class DashboardViewModel : ViewModel() {
     val vectorString_txt: MutableLiveData<String> = _vectorString_txt
     val published_txt: MutableLiveData<String> = _published_txt
     val description_txt: MutableLiveData<String> = _description_txt
+    val cvssMetric_txt: MutableLiveData<String> = _cvssMetric_txt
 
     val ProgressBarVisible: MutableLiveData<Int> =_ProgressBarVisible
 
