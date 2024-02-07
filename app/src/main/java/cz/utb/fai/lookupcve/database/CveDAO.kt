@@ -8,6 +8,8 @@ import androidx.room.Query
 
 @Dao
 interface CveDao {
+    @Query("delete from cve_table")
+    suspend fun deleteAllData()
 
     @Query("select * from cve_table order by id DESC")
     fun readAllData():LiveData<List<CveDTO>>

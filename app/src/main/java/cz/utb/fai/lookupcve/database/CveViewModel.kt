@@ -22,4 +22,9 @@ class CveViewModel(application: Application): AndroidViewModel(application) {
             repository.addCve(cve)
         }
     }
+    fun deleteAllData(){
+        viewModelScope.launch {
+            repository.deleteAllData()
+        }
+    }
 }

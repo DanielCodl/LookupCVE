@@ -9,4 +9,7 @@ class CveRepository(private val cveDao: CveDao) {
     suspend fun addCve(cve: CveDTO){
         cveDao.addCve(cve)
     }
+    suspend fun deleteAllData(){
+        cveDao.deleteAllData()
+    }
 }
