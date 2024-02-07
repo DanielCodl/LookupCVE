@@ -6,6 +6,8 @@
 
     <string name="bt_submit_cve_text">FETCH</string>
     <string name="cve_hint">CVE-YYYY-NNNN(NNN)</string>
+    <string name="tv_home_text">Welcome to LookupCVE application!</string>
+    <string name="iv_main_logo_desc">CVE main logo</string>
 
     <string name="cvssMetric_txt_sample">cvssMetricV31</string>
     <string name="id_txt_sample">CVE-2019-1010218</string>
